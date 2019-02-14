@@ -1,0 +1,38 @@
+<workflow-app name="First DataPipeline" xmlns="uri:oozie:workflow:0.5">
+    <start to="sqoop-b44e"/>
+    <kill name="Kill">
+        <message>Action failed, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <action name="sqoop-b44e">
+        <sqoop xmlns="uri:oozie:sqoop-action:0.2">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <command>import-all-tables --connect jdbc:mysql://quickstart:3306/retail_db --username retail_dba --password cloudera --direct --warehouse-dir /user/cloudera/sqoop_import/retailDB --as-textfile</command>
+            <file>/user/cloudera/db_connectors/mysql-connector-java.jar#mysql-connector-java.jar</file>
+        </sqoop>
+        <ok to="hive-50c0"/>
+        <error to="Kill"/>
+    </action>
+    <action name="hive-50c0" cred="hive2">
+        <hive2 xmlns="uri:oozie:hive2-action:0.1">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <jdbc-url>jdbc:hive2://quickstart.cloudera:10000/default</jdbc-url>
+            <script>${wf:appPath()}/hive-50c0.sql</script>
+        </hive2>
+        <ok to="hive-1d92"/>
+        <error to="Kill"/>
+    </action>
+    <action name="hive-1d92" cred="hive2">
+        <hive2 xmlns="uri:oozie:hive2-action:0.1">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <jdbc-url>jdbc:hive2://quickstart.cloudera:10000/default</jdbc-url>
+            <script>${wf:appPath()}/hive-1d92.sql</script>
+        </hive2>
+        <ok to="End"/>
+        <error to="Kill"/>
+    </action>
+    <end name="End"/>
+</workflow-app>
+
