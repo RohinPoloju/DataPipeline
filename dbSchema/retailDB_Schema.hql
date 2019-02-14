@@ -1,6 +1,11 @@
 drop database if exists ingestDB;
+
+--creating database ingestDB
+
 create database ingestDB;
 use ingestDB;
+
+--Departments
 
 create table departments(
 dept_id int,
@@ -9,6 +14,7 @@ row format delimited
 fields terminated by ','
 lines terminated by '\n';
 
+--Products
 
 create table products(
 product_id int,
@@ -21,6 +27,8 @@ product_image string
 row format delimited
 fields terminated by ','
 lines terminated by '\n';
+
+--Customers
 
 create table customers(
     cust_id int,
@@ -37,6 +45,8 @@ row format delimited
 fields terminated by ','
 lines terminated by '\n';
 
+
+--Orders
 
 create table orders(
     order_id int,
@@ -60,6 +70,8 @@ row format delimited
 fields terminated by ','
 lines terminated by '\n';
 
+--Categories
+
 create table categories(
     category_id int,
     category_dept_id int,
@@ -68,38 +80,4 @@ create table categories(
 row format delimited 
 fields terminated by ','
 lines terminated by '\n';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

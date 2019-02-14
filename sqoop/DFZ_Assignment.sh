@@ -20,7 +20,7 @@ sqoop job --delete orderItemsImport
 sqoop job --delete productImport
 sqoop job --delete categoriesImport
 
-
+# sqoop jobs for individual table imports
 # orders Sqoop job
 sqoop job \
 --create orderImport \
@@ -106,35 +106,4 @@ sqoop job \
 
 # sqoop job --list
 sqoop job --exec allTableImport 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
