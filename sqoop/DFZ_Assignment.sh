@@ -20,7 +20,10 @@ sqoop job --delete orderItemsImport
 sqoop job --delete productImport
 sqoop job --delete categoriesImport
 
+<<<<<<< HEAD
 # sqoop jobs for individual table imports
+=======
+>>>>>>> 7b29d8950ccb418b8335a018b51803464e524e32
 # orders Sqoop job
 sqoop job \
 --create orderImport \
