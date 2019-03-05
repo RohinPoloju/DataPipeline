@@ -12,7 +12,8 @@ dept_id int,
 dept_name string )
 row format delimited
 fields terminated by ','
-lines terminated by '\n';
+lines terminated by '\n'
+stored as textfile;
 
 --Products
 
@@ -26,7 +27,8 @@ product_image string
 )
 row format delimited
 fields terminated by ','
-lines terminated by '\n';
+lines terminated by '\n'
+stored as textfile;
 
 --Customers
 
@@ -43,7 +45,8 @@ create table customers(
 )
 row format delimited 
 fields terminated by ','
-lines terminated by '\n';
+lines terminated by '\n'
+stored as textfile;
 
 
 --Orders
@@ -56,7 +59,8 @@ create table orders(
 )
 row format delimited 
 fields terminated by ','
-lines terminated by '\n';
+lines terminated by '\n'
+stored as textfile;
 
 create table order_items(
     order_item_id int,
@@ -68,7 +72,8 @@ create table order_items(
 )
 row format delimited 
 fields terminated by ','
-lines terminated by '\n';
+lines terminated by '\n'
+stored as textfile;
 
 --Categories
 
@@ -79,5 +84,6 @@ create table categories(
 )
 row format delimited 
 fields terminated by ','
-lines terminated by '\n';
+lines terminated by '\n'
+stored as textfile;
 
